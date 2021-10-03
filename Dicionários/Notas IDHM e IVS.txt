@@ -1,0 +1,11 @@
+Notas: Adicionados manualmente os municípios criados após a coleta dos dados (2010):
+
+Nome do município: Código IBGE:
+Pescaria Brava     4212650
+Balneário Rincão   4212650
+Mojuí dos Campos   1504752
+Pinto Bandeira     4314548
+Paraíso das Águas  5006275
+
+Por óbvio, não consta dados de IDHM e IVS para estes municípios.
+Não foram encontrados dados mais recentes para esses indicadores.

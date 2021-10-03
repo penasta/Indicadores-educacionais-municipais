@@ -1,0 +1,12 @@
+todos: NO_CATEGORIA () e NO_DEPENDENCIA ()
+
+INSE: TP_TIPO_REDE () e TP_LOCALIZAÇÃO () [nessa tabela, não vem a descrição nominal do tipo e localização, e sim um vetor numérico a ser decifrado]
+
+media de horas aula: adicionada as colunas serie1, serie2 e serie3 (1ª - 2ª - 3ª Série EM)
+
+media de alunos por turma: colunas total, Serie1, Serie2 e Serie3 trocaram de nome para(na ordem): MED_CAT_0 , MED_01_CAT_0 , MED_02_CAT_0 , MED_03_CAT_0
+
+Percentual de funções docentes com curso superior: adicionado coluna EJA_CAT_0 (EJA)
+
+Taxa de não resposta: NO_CATEGORIA se chama TIPOLOCA   ;    NO_DEPENDENCIA se chama DEPENDAD
+

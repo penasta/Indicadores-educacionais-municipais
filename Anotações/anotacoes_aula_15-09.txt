@@ -1,0 +1,62 @@
+Robson:
+Ano a utilizar: 2019 [sugestão]
+
+Medida de indicador das escolas brasileiras usando TRI
+
+Solução:
+Selecionar variáveis pedagogicamente essenciais:
+- Biblioteca/laboratorio de ciencias/laboratorio de informatica/internet
+
+Indicadores de índice socioeconomico <- tem
+Infraestrutura <- não tem
+
+Segurança publica <-banco de dados do SAEB
+percepção (provavelmente não seria útil utilizar)
+
+Indicador de adequação (quanto os professores tem na escola por 
+disciplina são adequados [indicador já pronto])
+Proporção proporção/aluno
+
+INEP <- Indicador aluno/turno
+INEP TEM INDICADORES POR MUNICÍPIOS INTERESSANTES PARA O TRABALHO
+
+Quase 90% das matrículas é da rede pública estadual
+
+3 Grandes blocos: Infraestrutura,Rendimento e qualidade,contexto socioeconômico
+
+Valeria:
+Verificar indicadores
+Indicadores fora censo
+-> Situação de vulnerabilidade do município
+-> IDH
+-> Indicadores de gestão
+
+Taxas de rendimento:
+[indicadores de] aprovação, reprovação, abandono [para o município]
+Cruzar estes dados com o IDEB
+
+VER TEXTO DO ROBSON: ESTRUTURA MÍNIMA DO EM
+
+Construir banco de dados separando variáveis
+
+Davi:
+Dividir em blocos a análise
+Descartar variáveis de educação infantil
+Elencar variáveis e indicadores com os tópicos de mudança do EM
+Contas nacionais IBGE <- encontrar municípios, códigos...
+[dados 2004-]
+
+Ana:
+Objetivo NÃO é indicar se município está apto ou não a receber a reforma,
+e sim classificar municípios em clusters à definir.
+
+Organização de subgrupos:
+
+descritiva: Descrever o trabalho do cluster e do TRI e geral do trabalho
+explorar visualização desses dados
+clusters: Avaliar necessidade de indicadores, elaborar os clusters
+TRI: Selecionar indicadores para utilizar, fazer a análise TRI
+
+Até semana que vem, ao menos:
+[listar] nome do municipio, codigo do municipio, codigo UF
+{Problema: municíos criados/desmembrados}

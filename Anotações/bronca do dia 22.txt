@@ -1,0 +1,14 @@
+primeira analise descritiva dos indicadores
+
+Sinopse estatística já dá dados organizados por municípios
+
+Subgrupos:
+grupo TRI: alaisar indicadores e ver quais serão utilizados/
+leitura dos textos e metodologia a ser utilizada/
+davi: reunião segunda feira às 18h
+
+" cluster: alaisar indicadores e ver quais serão utilizados/
+
+" descritiva: proposta de analise descrita dos indicadores/metodologia; quais vão ser 
+as técnicas descritivas para descrever o conjunto de dados, pensando na questão dos municípios, respondendo
+a pergunta: os municipios estão preparados para implementar essa nova proposta de ensino médio

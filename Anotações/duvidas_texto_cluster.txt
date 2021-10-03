@@ -1,0 +1,20 @@
+Agrupamento de municípios por características comuns usando o algoritmo 
+de agrupamento de k-means (pg13)
+
+k-means agrega sem distinção de região. É interessante este método? (pg 17)
+/\ SIM
+
+método 2-step clusterização	
+
+k-means,2-steps,lógica fuzzy,qui-quadrado,hierárquico... criaremos o nosso ou usaremos um já existente? qual? <- k-means
+
+agrupar municipios por estados ou um agrupamento geral nacional?
+/\ GERAL NACIONAL
+
+variaveis? -- A DECIDIR COM O GRUPO -- TRABALHAR COM VARIAVEIS QUE EXISTEM CATALOGADAS
+
+É possível agrupar municípios com capitais? (homogeneidade dos minicipios ante as capitais)
+/\ RESPONDIDO [sim]
+
+>>>>>>>>>>a ordem dos clusters precisa ser justificada<<<<<<<<<<
+
