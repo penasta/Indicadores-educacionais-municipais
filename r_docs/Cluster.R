@@ -14,4 +14,5 @@ distidser <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de distorção i
 nresp <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de Não-Resposta.rds")
 rendimento <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de rendimento escolar.rds")
 
-teste <- rbind(idhivs,gestao)
+teste <- merge(idhivs,gestao,
+      by = "CO_MUNICIPIO")
