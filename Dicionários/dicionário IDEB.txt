@@ -1,0 +1,16 @@
+IDEB; Variáveis pré-selecionadas:
+CO_MUNICIPIO                      | Código do Município
+REDE                              | Tipo de rede da escola (Municipal,Estadual,Federal,Pública) *
+VL_APROVACAO_2019_SI_4            | Taxa de Aprovação - 2019 - Total
+VL_INDICADOR_REND_2019            | Taxa de Aprovação - 2019 - Indicador de Rendimento (P)
+VL_NOTA_MEDIA_2019                | Nota SAEB - 2019 - Nota Média Padronizada (N)
+VL_OBSERVADO_2019                 | IDEB 2019 (N x P) [???]**
+VL_PROJECAO_2019                  | Projeção 2019 ***
+
+* = Como o banco só constam escolas públicas, o "total" seria quando a indicação da rede é "Pública"
+
+** = Consta este rótulo no excel baixado do INEP, porém não consegui decifrar exatamente
+o que significa, apesar de aparentar ser simplesmente a nota do IDEB em 2019. Favor verificar.
+
+*** = Consta na mesma base o valor da projeção com valores diferentes do observado. Resolvi
+não eliminar a projeção por hora pois pode ser que seja útil mais para frente. 

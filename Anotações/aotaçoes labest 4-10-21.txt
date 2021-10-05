@@ -1,0 +1,25 @@
+IRD: fazer a análise exploratória
+
+percentual de docente com nível superior: indicador melhor
+
+evasão escolas: indicador melhor p/ aluno
+
+infra melhor que IDHM e IVS, porém ainda não disponível
+
+O indicador que a gente conseguiu de rendimento vêm com taxas de 
+aprovação, reprovação e abandono, apenas.
+
+IDEB = melhor que proeficiências
+
+juntar ao máximo: ensino médio como um todo ao invés de discriminar séries...
+
+IVS: PNAD 2015 Atualizado
+
+variável porte do município: categorização do IBGE 
+70% < 20.000 hab.
+...
+
+
+numero de matriculas por habitante
+/\ censo escolar
+/\ proeficiencia SAEB traz quantidade total de alunos
