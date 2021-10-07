@@ -1,0 +1,14 @@
+primeira proposta de clusterização:
+
+Municípios cujos docentes tem algum tipo de formação superior
+- Somar grupos 1,2,3 e 4; subtrair grupo 5
+
+
+
+segunda proposta de clusterização:
+Municípios cujos docentes tem formação superior específica:
+- Somar grupos 1 e 2; subtrair grupos 3,4 e 5
+
+
+formesp = formação específica
+form = formação superior qualquer
