@@ -1,4 +1,10 @@
+## Pacotes necessários
+
 pacman::p_load(dplyr, stringr,foreign,tidyverse,ggplot2,factoextra)
+
+##
+
+######### Leitura dos bancos: RODAR APENAS OS INDICADORES DESEJADOS
 
 idhivs <- readRDS("../Git/tabelas de indicadores em RDS/IDHM e IVS.rds")
 gestao <- readRDS("../Git/tabelas de indicadores em RDS/Complexidade de gestão da escola.rds")
@@ -15,8 +21,11 @@ nresp <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de Não-Resposta.rds
 rendimento <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de rendimento escolar.rds")
 IDEB <- readRDS("../Git/tabelas de indicadores em RDS/IDEB.rds")
 
-summary(IDEB)
-summary(adequadoc)
+#########
+
+#
+# Indicadores escolhidos para este primeiro teste de clusterização: IDEB(IDEB),IVS(idhivs),adequação de formação do docente(adequadoc)
+#
 
 # Ajustando os nomes das colunas para facilitar a programação
 
@@ -75,7 +84,7 @@ IDEB <- IDEB %>%
 
 IDEB$VL_OBSERVADO_2019 <- IDEB$VL_OBSERVADO_2019/8
 
-#Vamos aos testes. Indicadores selecionados para o teste: IDEB, IVS, Formação docente. Todos previamente padronizados para 0-1
+#Vamos aos testes os indicadores selecionados para o teste(IDEB, IVS, Formação docente) foram arbitrariamente padronizados para 0-1
 #Primeiramente vamos testar com docentes com algum tipo de formação superior
 
 summary(IDEB)
