@@ -1,0 +1,16 @@
+1. introdução
+ - contextualização (novo EM)
+ - objetivo: localizar municipios segundo infraestrutura (escolar p/ TRI, holísitica p/cluster)
+ - justificativa: (por que escolhemos os indicadores que escolhemos)
+
+2. metodologia
+- quais bases de dados utilizadas
+- técnica estatística (clusterização k-means)(alguns detalhes mas sem aprofundar muito)
+- lista dos indicadores utilizados
+
+3. Resultados encontrados
+- ...
+
+4. Próximos passos 
+- calibragem do modelo
+- analisar resultados segundo características dos municípios

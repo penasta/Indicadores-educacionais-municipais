@@ -34,7 +34,7 @@ colnames(IDEB) <- c('CO_MUNICIPIO','NO_DEPENDENCIA','VL_APROVACAO_2019_SI_4','VL
 # Filtragens para trabalharmos apenas com escolas da rede pública, conforme deliberação
 
 IDEB <- IDEB %>%
-  filter (NO_CATEGORIA=='Pública')
+  filter (NO_DEPENDENCIA=='Pública')
 
 adequadoc <- adequadoc %>%
   filter (NO_DEPENDENCIA=='Pública')%>%
@@ -73,6 +73,9 @@ summary(idhivs)
 
 IVS <- idhivs %>%
   select(CO_MUNICIPIO,IVS)
+
+#Trocando a lógica do IVS: originalmente, quanto mais próximo de 1, pior. Vou inverter a lógica para se adaptar a lógica dos outros indicadores (quanto mais próximo de 0, pior)
+IVS$IVS <- 1-(IVS$IVS)
 
 summary(IDEB$VL_OBSERVADO_2019)
 
