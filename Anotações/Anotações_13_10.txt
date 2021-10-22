@@ -1,0 +1,16 @@
+1- trocar as cores
+Ok	
+2- ver o IVS
+Temos as tabelas; testar IVS educação
+3- dividir a plotagem por estado e/ou região
+ Ok (Shiny)
+4- IVS educação
+Olhar ponto 2
+5- testar o indicador do teste de proeficiencia do SAEB
+Ok (?)
+6-  testar mais indicadores
+Ok...quais?
+7- verificar o método do nº de clusters
+(...)
+8- qual cluster é qual / Quem é quem nos clusters
+Temos as tabelas

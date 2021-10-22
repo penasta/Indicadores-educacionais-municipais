@@ -1,6 +1,6 @@
 ## Pacotes necessários
 
-pacman::p_load(dplyr, stringr,foreign,tidyverse,ggplot2,factoextra)
+pacman::p_load(dplyr, stringr,foreign,tidyverse,ggplot2,factoextra,readxl,xlsx)
 
 ##
 
@@ -20,8 +20,10 @@ distidser <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de distorção i
 nresp <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de Não-Resposta.rds")
 rendimento <- readRDS("../Git/tabelas de indicadores em RDS/Taxa de rendimento escolar.rds")
 IDEB <- readRDS("../Git/tabelas de indicadores em RDS/IDEB.rds")
+IVSCH <- readRDS("../Git/tabelas de indicadores em RDS/IVSCH.rds")
 
 #########
+
 
 #
 # Indicadores escolhidos para este primeiro teste de clusterização: IDEB(IDEB),IVS(idhivs),adequação de formação do docente(adequadoc)
@@ -70,15 +72,24 @@ summary(form$form)
 summary(idhivs)
 
 # Selecionando somente o IVS 2015
+#
+#IVS <- idhivs %>%
+#  select(CO_MUNICIPIO,IVS)
+#
+#Primeiro teste de IVS: Descontinuado
+#
+#
 
-IVS <- idhivs %>%
+
+# Preparando o IVS Capital Humano
+colnames(IVSCH) <- c('UF','c2','CO_MUNICIPIO','c4','c5','c6','c7','IVS','c9','c10','c11','c12','c13','c14')
+IVSCH <- as.data.frame(IVSCH)
+
+IVSCH$CO_MUNICIPIO <- as.numeric(IVSCH$CO_MUNICIPIO)
+IVSCH$IVS <- as.numeric(IVSCH$IVS)
+
+IVS <- IVSCH %>%
   select(CO_MUNICIPIO,IVS)
-
-#Trocando a lógica do IVS: originalmente, quanto mais próximo de 1, pior. Vou inverter a lógica para se adaptar a lógica dos outros indicadores (quanto mais próximo de 0, pior)
-IVS$IVS <- 1-(IVS$IVS)
-
-summary(IDEB$VL_OBSERVADO_2019)
-
 
 IDEB <- IDEB %>%
   select(CO_MUNICIPIO,VL_OBSERVADO_2019)
@@ -120,13 +131,13 @@ summary((centered.x <- scale(teste)))
 
 
 fviz_nbclust(centered.x, kmeans, method = "wss")+
-  geom_vline(xintercept = 4, linetype = 2)
+  geom_vline(xintercept = 3, linetype = 2)
 
 
-testek <- kmeans(centered.x, centers=4, iter.max=10, nstart=1)
+testek <- kmeans(centered.x, centers=3, iter.max=10, nstart=1)
 
 set.seed(123)
-testek=kmeans(testek, 4, nstart=25)
+testek=kmeans(testek, 3, nstart=25)
 print(testek)
 
 infocluster <- aggregate(teste, by=list(cluster=testek$cluster), mean)
@@ -181,13 +192,13 @@ summary((centered.x2 <- scale(teste2)))
 
 
 fviz_nbclust(centered.x2, kmeans, method = "wss")+
-  geom_vline(xintercept = 4, linetype = 2)
+  geom_vline(xintercept = 3, linetype = 2)
 
 
-testek2 <- kmeans(centered.x2, centers=4, iter.max=10, nstart=1)
+testek2 <- kmeans(centered.x2, centers=3, iter.max=10, nstart=1)
 
 set.seed(123)
-testek2=kmeans(testek2, 4, nstart=25)
+testek2=kmeans(testek2, 3, nstart=25)
 print(testek2)
 
 infocluster2 <- aggregate(teste2, by=list(cluster=testek2$cluster), mean)
@@ -208,3 +219,68 @@ fviz_cluster(testek2, data=teste12,
 )
 
 # QED
+
+
+#Gerando a tabela para dar merge no excel:
+
+teste12$CO_MUNICIPIO <- rownames(teste12)
+rownames(teste12)<-NULL
+
+summary(teste12)
+teste12$CO_MUNICIPIO <- as.numeric(teste12$CO_MUNICIPIO)
+summary(teste12)
+
+summary(IVSCH)
+
+colnames(IVSCH) <- c('UF','Nome da UF','CO_MUNICIPIO','Nome do Município','Município com 6 dígitos','Ano',
+                     'IVS','IVS Capital Humano','Taxa de analfabetismo - 18 anos ou mais','Taxa de analfabetismo - 25 anos ou mais',
+                     '% dos ocupados com médio completo - 18 anos ou mais',
+                     '% de pessoas de 15 a 24 anos que não estudam, não trabalham e possuem renda domiciliar per capita igual ou inferior a meio salário mínimo (de 2010)',
+                     'Taxa de analfabetismo - 18 anos ou mais','c14')
+IVSCH$c14 <- NULL
+
+merge <- teste12 %>%
+  select(formesp,VL_OBSERVADO_2019,cluster,CO_MUNICIPIO)
+
+tabelaf <- merge(IVSCH,merge, by = "CO_MUNICIPIO")
+
+write.xlsx(tabelaf, file = "tabela.xlsx",
+           sheetName = "Tabela", append = FALSE)
+
+#Agora, capturando as medidas de cada cluster
+
+c1 <- teste12 %>%
+  filter (cluster == '1')%>%
+  select(IVS,formesp,VL_OBSERVADO_2019)
+
+sc1 <- summary(c1)
+vc1  <- var(c1)
+
+write.xlsx(sc1, file = "medidascluster1.xlsx",
+           sheetName = "Tabela", append = FALSE)
+write.xlsx(vc1, file = "varianciacluster1.xlsx",
+           sheetName = "Tabela", append = FALSE)
+
+c2 <- teste12 %>%
+  filter (cluster == '2')%>%
+  select(IVS,formesp,VL_OBSERVADO_2019)
+
+sc2 <- summary(c2)
+vc2 <- var(c2)
+
+write.xlsx(sc2, file = "medidascluster2.xlsx",
+           sheetName = "Tabela", append = FALSE)
+write.xlsx(vc2, file = "varianciacluster2.xlsx",
+           sheetName = "Tabela", append = FALSE)
+
+c3 <- teste12 %>%
+  filter (cluster == '3')%>%
+  select(IVS,formesp,VL_OBSERVADO_2019)
+
+sc3 <- summary(c3)
+vc3 <- var(c3)
+
+write.xlsx(sc3, file = "medidascluster3.xlsx",
+           sheetName = "Tabela", append = FALSE)
+write.xlsx(vc3, file = "varianciacluster3.xlsx",
+           sheetName = "Tabela", append = FALSE)
