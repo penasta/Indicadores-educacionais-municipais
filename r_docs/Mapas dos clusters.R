@@ -5,14 +5,15 @@ pacman::p_load(dplyr, stringr,foreign,tidyverse,ggplot2,factoextra,geobr,reshape
 ##
 
 ##Trocando o nome para não confundir
-cluster1 <- teste1
 cluster2 <- teste12
 
 #Códigos de municípios voltando a ser uma coluna para plotagem
-cluster1$CO_MUNICIPIO <- nome
 cluster2$CO_MUNICIPIO <- nome2
-rownames(cluster1) <- NULL
 rownames(cluster2) <- NULL
+
+#bindando a tabela de clusters gerada com a de cluster artificial
+
+cluster2 <- Reduce(rbind, list(cluster2,ca))
 
 #Agora, plotando os municípios, cada um no cluster em que está inserido (1,2,3 ou 4)
 
@@ -23,33 +24,48 @@ head(metadata)
 #Agora sequestrar a coluna de geoplotagem
 all_mun <-read_municipality()
 all_mun <- all_mun %>%
-  select(code_muni,geom,code)
+  select(code_muni,geom)
 
 #Refazendo e ajustando o passo feito anteriormente para adequar ao nome do banco do {geobr}
-cluster1$code_muni <- nome
-cluster2$code_muni <- nome2
-cluster1 <- cluster1 %>%
-  select(IVS,form,VL_OBSERVADO_2019,cluster,code_muni)
+#cluster2$code_muni <- nome2
+
+colnames(cluster2) <- c('IVS','formesp','VL_OBSERVADO_2019','qtescola','cluster','code_muni')
+
 cluster2 <- cluster2 %>%
   select(IVS,formesp,VL_OBSERVADO_2019,cluster,code_muni)
 
 #Juntando agora o nosso banco com o banco do geobr
-cluster1 <- merge(cluster1,all_mun, by = "code_muni")
 cluster2 <- merge(cluster2,all_mun, by = "code_muni")
 
 #Agora, finalmente, a plotagem
-
-#Primeiro mapa: Municípios com formação docente superior qualquer
-ggplot() +
-  geom_sf(data=cluster1, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
 #Segundo mapa: Municípios com formação docente superior específica
 ggplot() +
   geom_sf(data=cluster2, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
+#Gerando a tabela para análise:
+
+tabelateste <- cluster2 %>%
+  select(IVS,formesp,VL_OBSERVADO_2019,cluster,code_muni)
+
+#verificando o numero de municipios em cada cluster
+
+verc1 <- tabelateste %>%
+  filter (cluster == 1)
+#cluster 1 = 1619 municípios
+verc2 <- tabelateste %>%
+  filter (cluster == 2)
+#cluster 2 = 1472 municípios
+verc3 <- tabelateste %>%
+  filter (cluster == 3)
+#cluster 3 = 1679 municípios
+verc4 <- tabelateste %>%
+  filter (cluster == 4)
+#cluster 4 = 793 municípios
+
 ######
+
 #Teste de  plotagem por região
 #somente Cluster1; Formação genérica
 
@@ -58,7 +74,7 @@ cluster1$code_state <- str_sub(cluster1$code_muni,1,2)
 cluster1$code_state <- as.numeric(cluster1$code_state)
 
 #Sul
-sul <- cluster1 %>%
+sul <- cluster2 %>%
   filter(code_state == "43" |code_state == "42" |code_state == "41")
 
 ggplot() +
@@ -66,7 +82,7 @@ ggplot() +
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
 #Sudeste
-sudeste <- cluster1 %>%
+sudeste <- cluster2 %>%
   filter(code_state == "35" |code_state == "33" |code_state == "32" |code_state == "31")
 
 ggplot() +
@@ -75,7 +91,7 @@ ggplot() +
 
 #Centro-oeste
 
-centro <- cluster1 %>%
+centro <- cluster2 %>%
   filter(code_state == "50" |code_state == "51" |code_state == "52" |code_state == "53")
 
 ggplot() +
@@ -83,7 +99,7 @@ ggplot() +
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
 #Nordeste
-nordeste <- cluster1 %>%
+nordeste <- cluster2 %>%
   filter(code_state == "21" |code_state == "22" |code_state == "23" |code_state == "24" | code_state == "25" |code_state == "26" |
            code_state == "27" |code_state == "28" |code_state == "29" )
 
@@ -92,7 +108,7 @@ ggplot() +
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
 #Norte
-norte <- cluster1 %>%
+norte <- cluster2 %>%
   filter(code_state == "11" |code_state == "12" |code_state == "13" |code_state == "14" | code_state == "15" |code_state == "16" |
            code_state == "17")
 
