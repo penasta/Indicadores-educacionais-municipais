@@ -39,7 +39,7 @@ cluster2 <- merge(cluster2,all_mun, by = "code_muni")
 
 #Agora, finalmente, a plotagem
 
-#Segundo mapa: Municípios com formação docente superior específica
+#Mapa final:
 ggplot() +
   geom_sf(data=cluster2, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
@@ -70,8 +70,8 @@ verc4 <- tabelateste %>%
 #somente Cluster1; Formação genérica
 
 #Criando coluna com codigo da  uf (2 dígitos)
-cluster1$code_state <- str_sub(cluster1$code_muni,1,2)
-cluster1$code_state <- as.numeric(cluster1$code_state)
+cluster2$code_state <- str_sub(cluster2$code_muni,1,2)
+cluster2$code_state <- as.numeric(cluster2$code_state)
 
 #Sul
 sul <- cluster2 %>%
