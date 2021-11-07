@@ -44,6 +44,15 @@ ggplot() +
   geom_sf(data=cluster2, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
   scale_fill_viridis_c(trans = "sqrt", alpha = .4)
 
+clusterteste <- cluster2
+cluster2$cluster <- as.factor(cluster2$cluster)
+
+ggplot() +
+  geom_sf(data=cluster2, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())
+
+
 #Gerando a tabela para análise:
 
 tabelateste <- cluster2 %>%
@@ -79,7 +88,8 @@ sul <- cluster2 %>%
 
 ggplot() +
   geom_sf(data=sul, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())
 
 #Sudeste
 sudeste <- cluster2 %>%
@@ -87,7 +97,8 @@ sudeste <- cluster2 %>%
 
 ggplot() +
   geom_sf(data=sudeste, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())
 
 #Centro-oeste
 
@@ -96,7 +107,8 @@ centro <- cluster2 %>%
 
 ggplot() +
   geom_sf(data=centro, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())
 
 #Nordeste
 nordeste <- cluster2 %>%
@@ -105,7 +117,8 @@ nordeste <- cluster2 %>%
 
 ggplot() +
   geom_sf(data=nordeste, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())
 
 #Norte
 norte <- cluster2 %>%
@@ -114,4 +127,5 @@ norte <- cluster2 %>%
 
 ggplot() +
   geom_sf(data=norte, aes(geometry=geom,fill=cluster), color= NA, size=.15)+
-  scale_fill_viridis_c(trans = "sqrt", alpha = .4)
+  scale_fill_manual(values = c("#386abb", "#fff505", "#f49d84","#a3a3a3"))+
+  theme(panel.grid.major = element_blank(),line = element_blank(), rect = element_blank())

@@ -175,7 +175,9 @@ summary((centered.x2 <- scale(teste2)))
 
 
 fviz_nbclust(centered.x2, kmeans, method = "wss")+
-  geom_vline(xintercept = 3, linetype = 2)
+  geom_vline(xintercept = 3, linetype = 2)+
+  labs(x="Número de clusters",y="Soma dos quadrados totais",title="Número otimizado de clusters")
+
 
 
 testek2 <- kmeans(centered.x2, centers= 3, iter.max=10, nstart=1)
@@ -194,12 +196,26 @@ head(teste12)
 #Agora, a visualização:
 
 fviz_cluster(testek2, data=teste12,
-             palette = c("#2E9FDF", "black", "#E7B800", "#FC4E07"),
+             palette = c("#386abb", "#fff505", "#f49d84"),
              ellipse.type="euclid",
              star.plot=TRUE,
              repel=TRUE,
+             show_labels = FALSE,
+             show.clust.cent=TRUE,
+             labelsize = 0,
              ggtheme=theme_minimal()
-)
+)+
+  labs(title="Gráfico dos clusters")
+
+
+fviz_cluster(testek2, data=teste12,
+             palette = c("#386abb", "#fff505", "#f49d84"),
+             geom = "point",
+             show.clust.cent=TRUE,
+             labelsize = 0#,
+             #ggtheme=theme_minimal()
+)+
+  labs(title="Gráfico dos clusters")
 
 # QED
 
@@ -267,3 +283,10 @@ write.xlsx(sc3, file = "medidascluster3.xlsx",
            sheetName = "Tabela", append = FALSE)
 write.xlsx(vc3, file = "varianciacluster3.xlsx",
            sheetName = "Tabela", append = FALSE)
+
+#
+
+#Exportando a tabela com médias dos indicadores dos clusters
+
+library("writexl")
+write_xlsx(infocluster2, "D:/Arquivos/unb2021/LabEst/Git/médias.xlsx")
