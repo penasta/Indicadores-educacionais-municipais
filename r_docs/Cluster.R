@@ -38,6 +38,14 @@ tam$c7 <- NULL
 summary(tam)
 #########
 
+#########
+#########
+#########
+c <- '1'
+#
+#
+####
+
 
 #
 # Indicadores escolhidos para este primeiro teste de clusterização: IDEB(IDEB),IVS(idhivs),adequação de formação do docente(adequadoc)
